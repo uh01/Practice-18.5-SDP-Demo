@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Show Posts{% endblock %}
+
+{% block content %}
+
+<div class="container mt-n2">
+  <div class="row">
+      {% for post in posts %}
+          <div class="col-sm-4 mb-4">
+              <div class="card mx-1">
+                  <div class="card-body">
+                      <h5 class="card-title">ID: {{ post.id }}</h5>
+                      <p class="card-title">Assigned Date: {{ post.taskAssignDate }}</p>
+                      {% comment %} <p class="card-title">Author Name: {{ post.author.first_name}} {{ post.author.last_name}}</p> {% endcomment %}
+
+                      <p>
+                          Category:
+                          {% if post.categories.all %}
+                              {% for category in post.categories.all %}
+                                  <button class="badge bg-secondary" disabled>{{ category.categoryName }}</button>
+                              {% endfor %}
+                          {% else %}
+                              No Categories
+                          {% endif %}
+                      </p>
+
+                      <p class="card-text">Description: {{ post.taskDescription }}</p>
+
+                      {% if not post.is_completed %}
+                          <a href="{% url 'edit_post' post.id %}" class="btn btn-primary">Edit</a>
+                          <a href="{% url 'delete_post' post.id %}" class="btn btn-danger">Delete</a>
+                      {% else %}
+                          <h6>Completed</h6>
+                      {% endif %}
+                  </div>
+              </div>
+          </div>
+      {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
