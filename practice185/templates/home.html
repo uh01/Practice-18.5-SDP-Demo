@@ -1,9 +1,22 @@
 {% extends 'base.html' %}
 
-{% block title %}Show Tasks{% endblock %}
+{% block title %}Home{% endblock %}
+
+{% load static %}
 
 {% block content %}
 
-    <h1>Homepage</h1>
-
+    {% comment %} <h1>Homepage</h1> {% endcomment %}
+    <div style="display: flex; align-items: center; justify-content: space-around;  margin-top: 40px; margin-left:140px; width:90%; gap:40px;">
+        <div class="col-6" style="margin-right:50px;">
+            <h7 class="H1" style="font-size: 30px;">Welcome to</h7>
+            <h1 class="H2" style="font-size: 90px; color: #ffc107; text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);">Demo Website</h1>
+            <p class="P1">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            <a class="" style="color: White;" href="{% url 'user_signin' %}"><button type="button" class="btn btn-dark"><strong>Get Started</strong></button></a>
+        </div>
+        <div class="col-6">
+            <img src="{% static 'images/building.png' %}" class="img-fluid" style="width:80%;  margin-top: 55px;" alt="bg"/>
+        </div>
+    </div>
 {% endblock %}
+
